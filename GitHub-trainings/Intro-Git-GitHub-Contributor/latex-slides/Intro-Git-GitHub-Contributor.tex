@@ -25,16 +25,16 @@
 %-----------------------------------------------
 % --- Include link to last commit
 \usepackage{xstring}
-\usepackage{catchfile}
+\usepackage{catchfile}		% may need to install?
 
 %Set this user input
-\newcommand{\gitfolder}{.git} %relative path to .git folder from .tex doc GitHub-trainings/Intro-Git-GitHub-Contributor/latex-slides/
+\newcommand{\gitfolder}{../../../.git} %relative path to .git folder from .tex doc GitHub-trainings/Intro-Git-GitHub-Contributor/latex-slides/
 \newcommand{\reponame}{buscandoaverroes/dime-github-trainings} % Name of account and repo be set in URL
 
 %Based on this https://tex.stackexchange.com/questions/455396/how-to-include-the-current-git-commit-id-and-branch-in-my-document
 \CatchFileDef{\headfull}{\gitfolder/HEAD.}{} 				%Get path to head file for checked out branch
 \StrGobbleRight{\headfull}{1}[\head]						%Remove end of line character
-\StrBehind[2]{\head}{/}[\branch]							%Parse out the path only
+\StrBehind[2]{\head}{/}[\branch]							%Parse out the path only, this store branch name.
 \CatchFileDef{\commit}{\gitfolder/refs/heads/\branch.}{}	%Get the content of the branch head
 \StrGobbleRight{\commit}{1}[\commithash]					%Remove end of line characted
 
@@ -706,7 +706,7 @@ not there. What could have happened and what should he do?
 
 \input{../../Common-Resources/slides/GitHub-Links.tex}
 
-\input{../../Common-Resources/slides/GitHub-Commit-URL.tex}
+%\input{../../Common-Resources/slides/GitHub-Commit-URL.tex}
 
 
 \end{document}
